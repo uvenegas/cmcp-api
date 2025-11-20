@@ -1,0 +1,585 @@
+{
+  "info": {
+    "_postman_id": "9c7b5d2e-0000-4000-8000-cmpcbooksapi000",
+    "name": "CMPC Books API",
+    "description": "Colección completa de endpoints para el backend CMPC (NestJS + PostgreSQL)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Admin\",\n  \"email\": \"admin@cmpc.com\",\n  \"password\": \"123456\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@cmpc.com\",\n  \"password\": \"123456\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create user",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"User 1\",\n  \"email\": \"user1@cmpc.com\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get user by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Authors",
+      "item": [
+        {
+          "name": "Create author",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/authors",
+              "host": ["{{baseUrl}}"],
+              "path": ["authors"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Stephen King\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all authors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/authors",
+              "host": ["{{baseUrl}}"],
+              "path": ["authors"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get author by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/authors/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["authors", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update author",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/authors/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["authors", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Stephen King (editado)\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete author",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/authors/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["authors", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Genres",
+      "item": [
+        {
+          "name": "Create genre",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/genres",
+              "host": ["{{baseUrl}}"],
+              "path": ["genres"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Terror\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all genres",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/genres",
+              "host": ["{{baseUrl}}"],
+              "path": ["genres"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get genre by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/genres/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["genres", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update genre",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/genres/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["genres", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Suspenso\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete genre",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/genres/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["genres", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Publishers",
+      "item": [
+        {
+          "name": "Create publisher",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/publishers",
+              "host": ["{{baseUrl}}"],
+              "path": ["publishers"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Penguin Random House\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all publishers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/publishers",
+              "host": ["{{baseUrl}}"],
+              "path": ["publishers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get publisher by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/publishers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["publishers", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update publisher",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/publishers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["publishers", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Planeta\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete publisher",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/publishers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["publishers", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Create book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/books",
+              "host": ["{{baseUrl}}"],
+              "path": ["books"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"It\",\n  \"price\": 19990,\n  \"available\": true,\n  \"authorId\": 1,\n  \"genreId\": 1,\n  \"publisherId\": 1,\n  \"imageUrl\": \"https://example.com/it.jpg\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get books (lista con filtros/paginación)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/books?page=1&limit=10&sortBy=title&sortDir=ASC&available=true",
+              "host": ["{{baseUrl}}"],
+              "path": ["books"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "title"
+                },
+                {
+                  "key": "sortDir",
+                  "value": "ASC"
+                },
+                {
+                  "key": "available",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search books by title",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/books?search=it",
+              "host": ["{{baseUrl}}"],
+              "path": ["books"],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "it"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get book by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/books/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["books", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update book",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/books/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["books", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"It (edición actualizada)\",\n  \"price\": 20990\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Soft delete book",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/books/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["books", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Export books CSV",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/books/export/csv",
+              "host": ["{{baseUrl}}"],
+              "path": ["books", "export", "csv"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
