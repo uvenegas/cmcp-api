@@ -13,11 +13,6 @@ import { Publisher } from '../publisher/publisher.entity';
 import { Genre } from '../genre/genre.entity';
 
 @Entity({ name: 'books' })
-@Index(['title'])
-@Index(['available'])
-@Index(['genre'])
-@Index(['author'])
-@Index(['publisher'])
 export class Book {
   @PrimaryGeneratedColumn()
   id: number;
@@ -31,16 +26,16 @@ export class Book {
   @Column({ default: true })
   available: boolean;
 
-  @Column({ nullable: true })
-  imageUrl: string;
+  @Column({ type: 'varchar', length: 500, nullable: true })
+  imageUrl?: string | null;
 
-  @ManyToOne(() => Author, (author) => author.books, { eager: true })
+  @ManyToOne(() => Author, (author) => author.books)
   author: Author;
 
-  @ManyToOne(() => Publisher, (publisher) => publisher.books, { eager: true })
+  @ManyToOne(() => Publisher, (publisher) => publisher.books)
   publisher: Publisher;
 
-  @ManyToOne(() => Genre, (genre) => genre.books, { eager: true })
+  @ManyToOne(() => Genre, (genre) => genre.books)
   genre: Genre;
 
   @CreateDateColumn()

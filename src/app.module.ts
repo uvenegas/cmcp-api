@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-dotenv.config(); //cargo .env
+dotenv.config();
 
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -11,6 +11,10 @@ import { AuthorModule } from './author/author.module';
 import { PublisherModule } from './publisher/publisher.module';
 import { GenreModule } from './genre/genre.module';
 import { BookModule } from './book/book.module';
+import { AuthModule } from './Auth/auth.module';
+
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 const DB_PORT = parseInt(process.env.DB_PORT ?? '5432', 10);
 
@@ -20,6 +24,13 @@ const DB_PORT = parseInt(process.env.DB_PORT ?? '5432', 10);
       isGlobal: true,
       envFilePath: '.env',
     }),
+
+    // se habilitan archivos
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
+      serveRoot: '/uploads',
+    }),
+
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
@@ -30,11 +41,13 @@ const DB_PORT = parseInt(process.env.DB_PORT ?? '5432', 10);
       autoLoadEntities: true,
       synchronize: true,
     }),
+
     UserModule,
     AuthorModule,
     PublisherModule,
     GenreModule,
     BookModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
