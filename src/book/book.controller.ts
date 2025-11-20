@@ -60,7 +60,7 @@ export class BookController {
   @Header('Content-Disposition', 'attachment; filename="books.csv"')
   async exportCsv(@Query() query: GetBooksQueryDto) {
     const csv = await this.bookService.exportToCsv(query);
-    return csv; // Nest se encarga de enviar el texto con esos headers
+    return csv;
   }
 
   @UseGuards(JwtAuthGuard)

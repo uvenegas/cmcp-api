@@ -207,7 +207,6 @@ export class BookService {
       'createdAt',
     ];
 
-    // Escapar comillas internas
     const escape = (value: any) =>
       `"${String(value ?? '').replace(/"/g, '""')}"`;
 
